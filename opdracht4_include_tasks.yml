@@ -1,0 +1,9 @@
+---
+- name: "[include_tasks] Toon melding dat dit dynamisch is ingeladen"
+  debug:
+    msg: "Dit is een dynamisch ingeladen taak via include_tasks. Wordt alleen uitgevoerd als distributie Ubuntu is."
+
+- name: "[include_tasks] Maak een testbestand aan"
+  copy:
+    content: "Aangemaakt via include_tasks\n"
+    dest: /tmp/opdracht4_include.txt

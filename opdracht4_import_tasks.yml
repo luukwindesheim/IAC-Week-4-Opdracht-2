@@ -1,0 +1,9 @@
+---
+- name: "[import_tasks] Toon de distributienaam"
+  debug:
+    msg: "Dit is een statisch ingeladen taak via import_tasks. Distributie: {{ ansible_distribution }}"
+
+- name: "[import_tasks] Maak een testbestand aan"
+  copy:
+    content: "Aangemaakt via import_tasks\n"
+    dest: /tmp/opdracht4_import.txt

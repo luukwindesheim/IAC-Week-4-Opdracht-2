@@ -1,0 +1,16 @@
+---
+- name: Installeer UFW
+  apt:
+    name: ufw
+    state: present
+    update_cache: true
+
+- name: Sta poort 8080 toe in UFW
+  ufw:
+    rule: allow
+    port: "8080"
+    proto: tcp
+
+- name: Activeer UFW
+  ufw:
+    state: enabled

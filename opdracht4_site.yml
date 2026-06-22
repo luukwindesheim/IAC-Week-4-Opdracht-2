@@ -1,0 +1,16 @@
+---
+- name: Opdracht 4 - Includes en Imports
+  hosts: ubuntu
+  become: true
+  gather_facts: true
+
+  roles:
+    - role_firewall
+
+  tasks:
+    - name: Laad taken statisch met import_tasks
+      import_tasks: opdracht4_import_tasks.yml
+
+    - name: Laad taken dynamisch met include_tasks (alleen op Ubuntu)
+      include_tasks: opdracht4_include_tasks.yml
+      when: ansible_distribution == "Ubuntu"
