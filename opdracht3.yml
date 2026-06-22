@@ -1,0 +1,26 @@
+---
+- name: Opdracht 3 - Voorwaardelijke taken
+  hosts: ubuntu
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Taak alleen op Ubuntu
+      debug:
+        msg: "Dit is een Ubuntu machine"
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Taak alleen op Red Hat
+      debug:
+        msg: "Dit is een Red Hat machine"
+      when: ansible_distribution == "RedHat"
+
+    - name: Controleer of /etc/hosts bestaat
+      stat:
+        path: /etc/hosts
+      register: hosts_bestand
+      failed_when: hosts_bestand.stat.exists == false
+
+    - name: Echo hallo (niet als changed weergeven)
+      command: echo hallo
+      changed_when: false
