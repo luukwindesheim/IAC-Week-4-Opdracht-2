@@ -11,7 +11,7 @@
 
 ### Wanneer gebruik je welke?
 
-**import_tasks** gebruik je als je taken altijd wil inladen en de inhoud van het bestand van tevoren bekend is. Ansible leest het bestand in vóór het playbook start, waardoor tags en handlers correct werken.
+**import_tasks** gebruik je als je taken altijd wil inladen en de inhoud van het bestand van tevoren bekend is. Ansible leest het bestand in voor het playbook start, waardoor tags en handlers correct werken.
 
 **include_tasks** gebruik je als je taken dynamisch wil inladen, bijvoorbeeld afhankelijk van een variabele of het resultaat van een eerdere taak. Het bestand wordt pas ingeladen op het moment dat de taak aan de beurt is.
 
@@ -19,6 +19,6 @@
 
 Roles zorgen voor herbruikbaarheid en overzicht:
 
-- **Herbruikbaar** — een role zoals `role_firewall` kun je in meerdere playbooks gebruiken zonder de code te kopiëren.
-- **Overzichtelijk** — taken, variabelen en handlers staan gegroepeerd per functie in plaats van alles in één groot playbook.
-- **Makkelijk te delen** — roles kun je delen via Ansible Galaxy of tussen projecten kopiëren.
+- **Herbruikbaar** , een role zoals `role_firewall` kun je in meerdere playbooks gebruiken zonder de code te kopiëren.
+- **Overzichtelijk** , taken, variabelen en handlers staan gegroepeerd per functie in plaats van alles in één groot playbook.
+- **Makkelijk te delen** , roles kun je delen via Ansible Galaxy of tussen projecten kopiëren.
