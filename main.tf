@@ -5,6 +5,7 @@ resource "esxi_guest" "ubuntu" {
   numvcpus = 1
   memsize  = 1024
 
+  ovf_source    = "https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.ova"
   boot_firmware = "efi"
   guestos       = "ubuntu-64"
 
@@ -17,15 +18,15 @@ resource "esxi_guest" "ubuntu" {
 
   power = "on"
 
-  extra_config = {
-    "guestinfo.metadata"          = base64encode(file("${path.module}/metadata.yaml"))
-    "guestinfo.metadata.encoding" = "base64"
+  guestinfo = {
+    "metadata"          = base64encode(file("${path.module}/metadata.yaml"))
+    "metadata.encoding" = "base64"
 
-    "guestinfo.userdata" = base64encode(templatefile("${path.module}/userdata.yaml", {
+    "userdata" = base64encode(templatefile("${path.module}/userdata.yaml", {
       admin_user = var.esxi_user
       ssh_pubkey = file(var.ssh_pubkey)
     }))
-    "guestinfo.userdata.encoding" = "base64"
+    "userdata.encoding" = "base64"
   }
 }
 

@@ -1,0 +1,16 @@
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+
+# Gegenereerde bestanden
+inventory.ini
+
+# SSH sleutels
+*.pem
+*.key
