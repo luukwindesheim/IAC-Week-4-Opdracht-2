@@ -1,0 +1,20 @@
+---
+- name: Installeer mariadb-server
+  apt:
+    name:
+      - mariadb-server
+      - python3-pymysql
+    state: present
+    update_cache: true
+
+- name: Start en activeer mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: Maak database {{ db_name }} aan
+  mysql_db:
+    name: "{{ db_name }}"
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock

@@ -1,0 +1,23 @@
+---
+- name: Installeer nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Configureer nginx op poort {{ nginx_port }}
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Herstart nginx
+
+- name: Plaats index.html via Jinja2-template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
+- name: Start en activeer nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true

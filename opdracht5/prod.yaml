@@ -1,0 +1,16 @@
+---
+- name: Configureer webservers
+  hosts: web
+  become: true
+  gather_facts: true
+
+  roles:
+    - role_web
+
+- name: Configureer databaseserver
+  hosts: db
+  become: true
+  gather_facts: true
+
+  roles:
+    - luukwindesheim.role_db
