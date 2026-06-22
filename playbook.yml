@@ -1,0 +1,33 @@
+---
+- name: Opdracht 2 - Variabelen gebruiken in een playbook
+  hosts: ubuntu
+  become: true
+  gather_facts: true
+
+  vars:
+    motd_message: "Welkom bij het lab"
+
+  tasks:
+    - name: Zet motd_message in /etc/motd
+      copy:
+        content: "{{ motd_message }}\n"
+        dest: /etc/motd
+
+    - name: Maak /etc/app.conf met app_name uit de inventory
+      copy:
+        content: "Application = {{ app_name }}\n"
+        dest: /etc/app.conf
+
+    - name: Voer uname -r uit en registreer de output
+      command: uname -r
+      register: kernel_version
+
+    - name: Schrijf kernel_version.stdout naar /tmp/kernel.txt
+      copy:
+        content: "{{ kernel_version.stdout }}\n"
+        dest: /tmp/kernel.txt
+
+    - name: Schrijf ansible_distribution naar /tmp/facts.txt
+      copy:
+        content: "{{ ansible_distribution }}\n"
+        dest: /tmp/facts.txt
